@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Consumidor API</title>
+  <link rel="stylesheet" href="main.css">
+</head>
+    <body>
+    <div class="container">
+        <h1>Consumidor da API — Aula (Flask • SQLite • JWT • CV)</h1>
+
+        <div class="card" id="auth-card">
+        <strong>Autenticação</strong>
+        <div style="margin-top:8px" class="two-col">
+            <div>
+            <label>Email</label>
+            <input id="email">
+            <label>Senha</label>
+            <input id="senha" type="password">
+            <div class="row" style="margin-top:8px">
+                <button id="btn-registrar">Registrar</button>
+                <button id="btn-login" class="secondary">Login</button>
+            </div>
+
+            <div style="margin-top:8px">
+                <div class="small">Token salvo (localStorage)</div>
+                <div id="token" class="token muted">nenhum</div>
+                <div style="margin-top:8px" class="row">
+                <button id="btn-logout" class="secondary">Sair (remover token)</button>
+                <button id="btn-copy" class="secondary">Copiar token</button>
+                </div>
+            </div>
+            </div>
+
+            <div>
+            <div class="small">Resposta bruta (para debug)</div>
+            <pre id="debug" style="height:220px">-- pronto --</pre>
+            </div>
+        </div>
+        </div>
+
+        <div class="card">
+        <strong>Produtos (GET /produtos, GET /produto?id=...)</strong>
+        <div class="row" style="margin-top:8px">
+            <button id="btn-list-produtos">Listar produtos</button>
+            <input id="produto-id" placeholder="ID (ex: 1)" />
+            <button id="btn-get-produto" class="secondary">Buscar produto</button>
+        </div>
+        <div style="margin-top:10px" id="produtos-list"></div>
+
+        <hr style="margin:12px 0" />
+        <strong>Cadastrar produto (POST /produto/cadastrar)</strong>
+        <label>Descrição</label>
+        <input id="produto-desc" placeholder="Webcam Full HD" />
+        <label>Valor</label>
+        <input id="produto-valor" placeholder="159.9" />
+        <div class="row" style="margin-top:8px">
+            <button id="btn-cadastrar-produto">Cadastrar (requer token)</button>
+        </div>
+        </div>
+
+        <div class="card">
+        <strong>Livros (GET /livros, POST /livro/cadastrar)</strong>
+        <div class="row" style="margin-top:8px">
+            <button id="btn-list-livros">Listar livros</button>
+            <input id="livro-id" placeholder="ID" />
+            <button id="btn-get-livro" class="secondary">Buscar livro</button>
+        </div>
+        <div id="livros-list" style="margin-top:10px"></div>
+
+        <hr style="margin:12px 0" />
+        <label>Título</label>
+        <input id="livro-titulo" placeholder="Clean Code em Python" />
+        <label>Resumo</label>
+        <textarea id="livro-resumo" rows="3" placeholder="Resumo..."></textarea>
+        <label>Capa (URL)</label>
+        <input id="livro-capa" placeholder="https://.../capa.png" />
+        <label>Valor</label>
+        <input id="livro-valor" placeholder="89.9" />
+        <div style="margin-top:8px"><button id="btn-cadastrar-livro">Cadastrar livro</button></div>
+        </div>
+
+        <div class="card">
+        <strong>Visão computacional (classificar / detectar)</strong>
+        <div style="margin-top:8px" class="row">
+            <div>
+            <label>Escolha imagem (PNG/JPG)</label>
+            <input id="file-image" type="file" accept="image/*" />
+            <div style="margin-top:8px" class="row">
+                <button id="btn-classificar">Classificar (POST /classificar)</button>
+                <button id="btn-detectar" class="secondary">Detectar (POST /detectar)</button>
+            </div>
+            <div style="margin-top:8px"><span class="small">Preview local</span><div id="local-preview"></div></div>
+            </div>
+            <div>
+            <div class="small">Resultados</div>
+            <div id="cv-result"></div>
+            <div id="cv-preview-img" style="margin-top:8px"></div>
+            </div>
+        </div>
+        </div>
+
+        <div class="card">
+        <strong>Console de respostas</strong>
+        <div class="muted" style="margin-top:8px">As respostas seguem o formato informado pela API: {status_code, success, message, response}</div>
+        <pre id="console" style="height:140px;margin-top:8px">pronto.</pre>
+        </div>
+
+        <div style="height:40px"></div>
+    </div>
+
+    </body>
+    <script src="main.js"></script>
+</html>
